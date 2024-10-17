@@ -13,8 +13,10 @@ enum class DrawingTool(
     LINE_DOTTED(resId = R.drawable.ic_line_dotted),
     ARROW_ONE_SIDED(resId = R.drawable.ic_arrow_one_sided),
     ARROW_TWO_SIDED(resId = R.drawable.ic_arrow_one_sided),
-    RECTANGLE_FILLED(resId = R.drawable.ic_rectangle_filled),
+    RECTANGLE_OUTLINE(resId = R.drawable.ic_rectangle_outline),
     CIRCLE_OUTSIDE(resId = R.drawable.ic_circle_outline),
     CIRCLE_FILLED(resId = R.drawable.ic_circle_filled),
+    RECTANGLE_FILLED(resId = R.drawable.ic_rectangle_filled),
+    TRIANGLE_FILLED(resId = R.drawable.ic_triangle_filled),
     TRIANGLE_OUTLINE(resId = R.drawable.ic_triangle_outline),
 }
