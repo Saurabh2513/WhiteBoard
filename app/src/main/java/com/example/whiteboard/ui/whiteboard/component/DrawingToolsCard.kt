@@ -1,6 +1,9 @@
 package com.example.whiteboard.ui.whiteboard.component
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -8,7 +11,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -30,14 +32,19 @@ import com.example.whiteboard.domain.model.DrawingTool
 
 @Composable
 fun DrawingToolsCard(
-    isVisible : Boolean,
+    isVisible: Boolean,
     modifier: Modifier = Modifier,
     selectedTool: DrawingTool,
     onToolClick: (DrawingTool) -> Unit,
     onCloseItemClick: () -> Unit
 ) {
+
     AnimatedVisibility(
-        modifier = Modifier,visible = isVisible) {
+        modifier = Modifier,
+        visible = isVisible,
+        enter = slideInVertically(tween(durationMillis = 500)) { h -> h },
+        exit = slideOutVertically(tween(durationMillis = 500)) { h -> h },
+    ) {
         ElevatedCard {
             Row(
                 modifier = Modifier.padding(10.dp),
@@ -57,9 +64,9 @@ fun DrawingToolsCard(
                     }
                 }
                 FilledIconButton(onClick = { onCloseItemClick() }) {
-                    Icon(imageVector = Icons.Default.Close,
-                        contentDescription = "Close"
-                        ,
+                    Icon(
+                        imageVector = Icons.Default.Close,
+                        contentDescription = "Close",
                         modifier = Modifier.size(25.dp),
                     )
                 }
